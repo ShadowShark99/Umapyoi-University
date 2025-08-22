@@ -5,7 +5,12 @@ async function getAllUmas(){
   return rows;
 }
 
+async function enrollUma(uma){
+  await pool.query("INSERT INTO umamusume (trainer, uma_id) VALUES ($1, $2)", [uma.trainer, uma.uma_id]);
+}
+
 
 module.exports={
   getAllUmas,
+  enrollUma,
 };
