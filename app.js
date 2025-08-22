@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
+const indexRouter = require("./routers/indexRouter");
 
-app.get("/", (req,res) => {res.send("hello world")});
+app.use("/", indexRouter);
 
 const PORT = process.env.PORT || 3000;
 
