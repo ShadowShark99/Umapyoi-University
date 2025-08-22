@@ -1,5 +1,5 @@
 require('dotenv').config();
-const {Client} = require("db");
+const {Client} = require("pg");
 
 const SQL=`
   CREATE TABLE IF NOT EXISTS umamusume(
@@ -9,9 +9,9 @@ const SQL=`
     victories INTEGER DEFAULT 0
   );
 
-  INSERT INTO umamusume (trainer, id)
+  INSERT INTO umamusume (trainer, uma_id)
   VALUES
-    ('Shadowshark99, 1)
+    ('Shadowshark99', 1)
 `;
 
 async function main (){
