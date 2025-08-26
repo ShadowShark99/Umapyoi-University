@@ -6,20 +6,12 @@ exports.getHome = async (req, res) => {
 }
 
 //example id: (1002, 4536), (1003, 4550), (1001m 4737)
-//gets called by view GET
-exports.expand = async (req, res) => {
-  console.log("expanding");
-  const {umaInfo} = req.body;
-  console.log(umaInfo);
-  const get = `https://umapyoi.net/api/v1/character/1002`;
-  const fetchUma = async () => {
-
+const fetchUma = async (id) => {
+      const get = `https://umapyoi.net/api/v1/character/${id}`;
       const response = await fetch(get);
       const result = await response.json();
       console.log("result recieved");
       console.log(result);
-      // setPokemonName(result.name);
-      // setSpriteUrl(result.sprites.front_default);
       return {name: result.name_en, 
               src: result.sns_icon, 
               profile: result.profile,
@@ -27,6 +19,17 @@ exports.expand = async (req, res) => {
             };
   };
 
-  const uma = await fetchUma();
+//gets called by view GET
+exports.expand = async (req, res) => {
+  console.log("expanding");
+  const {umaInfo} = req.body;
+  console.log(umaInfo);
+  const uma = await fetchUma(umaInfo);
   res.render("umaExpand", {uma});
 };
+
+exports.delete = async (req, res) => {
+  const {trainer} = req.body;
+  await db.deleteUma(trainer);
+  res.redirect("/");
+}

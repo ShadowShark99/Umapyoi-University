@@ -4,5 +4,6 @@ const indexRouter = Router();
 
 indexRouter.get("/", indexController.getHome);
 indexRouter.post("/expand", indexController.expand);
+indexRouter.post("/delete", indexController.delete);
 
 module.exports = indexRouter;

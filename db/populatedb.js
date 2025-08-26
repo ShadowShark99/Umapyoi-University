@@ -11,7 +11,7 @@ const SQL=`
 
   INSERT INTO umamusume (trainer, uma_id)
   VALUES
-    ('Shadowshark99', 1)
+    ('Shadowshark99', 1002)
 `;
 
 async function main (){
