@@ -2,6 +2,7 @@ const db = require("../db/queries");
 
 exports.getHome = async (req, res) => {
   const rows = await db.getAllUmas();
+  await addUmaInfo(rows);
   res.render("index", {title: "Umapyoi University" ,umamusume: rows});
 }
 
@@ -12,12 +13,17 @@ const fetchUma = async (id) => {
       const result = await response.json();
       console.log("result recieved");
       console.log(result);
-      return {name: result.name_en, 
-              src: result.sns_icon, 
-              profile: result.profile,
-              audio: result.voice,
-            };
+      return result;
   };
+
+const addUmaInfo = async (umamusume) => {
+  for(let i = 0; i < umamusume.length; i++)
+  {
+    const umaInfo = await fetchUma(umamusume[i].uma_id);
+    umamusume[i].name = umaInfo.name_en;
+  }
+};
+
 
 //gets called by view GET
 exports.expand = async (req, res) => {
@@ -25,6 +31,11 @@ exports.expand = async (req, res) => {
   const {umaInfo} = req.body;
   console.log(umaInfo);
   const uma = await fetchUma(umaInfo);
+  const umaExpand = {name: uma.name_en, 
+                      src: uma.sns_icon, 
+                      profile: uma.profile,
+                      audio: uma.voice,
+                    };
   res.render("umaExpand", {uma});
 };
 
