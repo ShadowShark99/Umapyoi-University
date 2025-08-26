@@ -1,12 +1,15 @@
 const db = require("../db/queries")
+const umddb = require("../db/umaDatabase");
 const umaAPI = require("./umaAPI");
+
 
 
 exports.formGet = async (req,res) => {
   const umamusume = await umaAPI.fetchUmaIds();
   //console.log(umamusume);
-  makeDropDownInfo(umamusume);
-  res.render("enroll", {umamusume});
+  // await makeDropDownInfo(umamusume);
+  // console.log(umamusume);
+  res.render("enroll", {umamusume: umddb.dropdown});
 }
 
 const makeDropDownInfo = async(ids) => {
@@ -19,9 +22,9 @@ const makeDropDownInfo = async(ids) => {
     }
     const umaInfo = await umaAPI.fetchUma(uma.game_id);
     uma.name = umaInfo.name_en;
-    console.log(uma.name);
 
   }
+  console.log("finished");
 };
 
 exports.umaPost = async (req,res) => {

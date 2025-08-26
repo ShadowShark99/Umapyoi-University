@@ -29,7 +29,7 @@ exports.expand = async (req, res) => {
                       profile: uma.profile,
                       audio: uma.voice,
                     };
-  res.render("umaExpand", {uma});
+  res.render("umaExpand", {uma: umaExpand});
 };
 
 exports.delete = async (req, res) => {
