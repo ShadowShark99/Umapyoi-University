@@ -10,20 +10,23 @@ exports.getHome = async (req, res) => {
 exports.expand = async (req, res) => {
   console.log("expanding");
   const {umaInfo} = req.body;
+  console.log(umaInfo);
   const get = `https://umapyoi.net/api/v1/character/1002`;
-  let umaName = "Special week";
-  const fetchUmas = async () => {
+  const fetchUma = async () => {
 
       const response = await fetch(get);
-      console.log("response recieved");
-      console.log(response);
       const result = await response.json();
       console.log("result recieved");
       console.log(result);
       // setPokemonName(result.name);
       // setSpriteUrl(result.sprites.front_default);
+      return {name: result.name_en, 
+              src: result.sns_icon, 
+              profile: result.profile,
+              audio: result.voice,
+            };
   };
 
-  fetchUmas();
-  res.redirect("/");
+  const uma = await fetchUma();
+  res.render("umaExpand", {uma});
 };
