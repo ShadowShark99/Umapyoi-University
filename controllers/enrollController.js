@@ -7,7 +7,7 @@ const umaAPI = require("./umaAPI");
 exports.formGet = async (req,res) => {
   const umamusume = await umaAPI.fetchUmaIds();
   //console.log(umamusume);
-  // await makeDropDownInfo(umamusume);
+  //await makeDropDownInfo(umamusume);
   // console.log(umamusume);
   res.render("enroll", {umamusume: umddb.dropdown});
 }
@@ -22,6 +22,7 @@ const makeDropDownInfo = async(ids) => {
     }
     const umaInfo = await umaAPI.fetchUma(uma.game_id);
     uma.name = umaInfo.name_en;
+    console.log(uma);
 
   }
   console.log("finished");
