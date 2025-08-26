@@ -5,10 +5,10 @@ exports.formGet = (req,res) => {
 }
 
 exports.umaPost = async (req,res) => {
-  const {trainer, uma} = req.body;
+  const {trainer, umaSelect} = req.body;
   const newUma = {
     trainer,
-    uma_id: uma,
+    uma_id: umaSelect,
   };
   await db.enrollUma(newUma);
   res.redirect("/");

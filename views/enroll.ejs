@@ -1,7 +1,10 @@
-<form action="/enroll" method="POST">
+<form action="/enroll" method="POST" id="umaForm">
   <label for="trainer">Trainer: </label>
   <input type="text" name="trainer" id="trainer"/>
-  <label for="uma"> Uma_ID: </label>
-  <input type="number" name="uma" id="uma"/>
+  <label for="umaSelect">Choose Uma: </label>
+  <select name="umaSelect" id="umaSelect" form="umaForm">
+    <option value="1002">Silence Suzuka</option>
+  </select>
+
   <button type="submit">Enroll</button>
 </form>
