@@ -28,17 +28,33 @@ const makeDropDownInfo = async(ids) => {
   console.log("finished");
 };
 
+const checkExistingUma = (umas, id) => {
+  for(let i = 0; i < umas.length; i++)
+  {
+    if(umas[i].uma_id == id)
+      return true;
+  }
+  return false;
+};
+
 exports.umaPost = async (req,res) => {
   const {trainer, umaSelect} = req.body;
   const existingTrainer = await db.getExistingTrainer(trainer);
 
-  const newUma = existingTrainer ? {
+  const newUma = (existingTrainer.length > 0)? {
     trainer: existingTrainer[0].trainer,
     uma_id: umaSelect,
   } : {
     trainer,
     uma_id: umaSelect,
   };
+
+
+
+  if(existingTrainer.length > 0 && checkExistingUma(existingTrainer,umaSelect)){
+    res.render("error");
+  }
+
   await db.enrollUma(newUma);
   res.redirect("/");
 };
