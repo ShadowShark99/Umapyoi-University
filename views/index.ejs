@@ -3,24 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/styles.css" type="text/css">
   <title><%= title %></title>
 </head>
 <body>
   <h1> <%= title %></h1>
+  <div class="uma-board">
   <% if(locals.umamusume) { %>
     <% for(let i = 0; i < umamusume.length; i++) { %>
-      <div> <%- include("./partials/uma", {uma: umamusume[i]}) %></div>
-      <form action="/expand" method="POST">
-        <input type="hidden" name="umaInfo" value="<%= umamusume[i].uma_id %>"> 
-        <button type="submit">expand</button>
-      </form>
-      <form action="/delete" method="POST">
-        <input type="hidden" name="trainer" value ="<%= umamusume[i].trainer %>">
-        <button type="submit">delete</button>
-      </form>
+      <div class="uma-card">
+        <div> <%- include("./partials/uma", {uma: umamusume[i]}) %></div>
+        <div class="uma-card-buttons">
+        <form action="/expand" method="POST">
+          <input type="hidden" name="umaInfo" value="<%= umamusume[i].uma_id %>"> 
+          <button type="submit" class="expand-button">expand</button>
+        </form>
+        <form action="/delete" method="POST">
+          <input type="hidden" name="trainer" value ="<%= umamusume[i].trainer %>">
+          <button type="submit" class="delete-button">delete</button>
+        </form>
+        </div>
+      </div>
     <% } %>
     
   <% } %>
+  </div>
   
   <a href="/enroll">Enroll Your Uma</a>
   

@@ -3,7 +3,6 @@
   <input type="text" name="trainer" id="trainer"/>
   <label for="umaSelect">Choose Uma: </label>
   <select name="umaSelect" id="umaSelect" form="umaForm">
-    <option value="1002">Silence Suzuka</option>
     <% for(let i = 0; i < umamusume.length; i++) { %>
       <option value="<%= umamusume[i].game_id%>"><%= umamusume[i].name %> </option>
     <% } %>

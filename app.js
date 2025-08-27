@@ -4,6 +4,10 @@ const app = express();
 const indexRouter = require("./routers/indexRouter");
 const enrollRouter = require("./routers/enrollRouter");
 
+
+//css
+app.use(express.static('public'));
+
 //views
 app.use(express.urlencoded({extended: true}));
 
