@@ -1,3 +1,15 @@
 <% for(let i = 0; i < umamusume.length; i++){ %>
-  <div> <%= umamusume[i].name %></div>
+  <div class="uma-card">
+    <div class="uma-info"> <%- include("./partials/uma", {uma: umamusume[i]}) %></div>
+    <div class="uma-card-buttons">
+    <form action="/expand" method="POST">
+      <input type="hidden" name="umaInfo" value="<%= umamusume[i].uma_id %>"> 
+      <button type="submit" class="expand-button">expand</button>
+    </form>
+    <form action="/delete" method="POST">
+      <input type="hidden" name="trainer" value ="<%= umamusume[i].trainer %>">
+      <button type="submit" class="delete-button">delete</button>
+    </form>
+    </div>
+  </div>
 <% } %>

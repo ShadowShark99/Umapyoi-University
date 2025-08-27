@@ -32,8 +32,10 @@ exports.expand = async (req, res) => {
 };
 
 exports.delete = async (req, res) => {
-  const {trainer} = req.body;
-  await db.deleteUma(trainer);
+  const {trainer, uma_id} = req.body;
+  console.log(trainer);
+  console.log(uma_id);
+  await db.deleteUma(trainer, uma_id);
   res.redirect("/");
 }
 
