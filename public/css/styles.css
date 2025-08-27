@@ -6,32 +6,50 @@ h4{
 .uma-board{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  justify-items: center;
+  justify-items: strech;
   margin: 40px;
   border-radius: 10px;
-  padding: 20px 0 20px 0;
+  padding: 20px;
+  gap: 20px;
   background-color: aliceblue;
 }
 
 .uma-card{
+  background-color: rgb(192, 192, 216);
   display: grid;
   border: 3px solid rgb(101, 101, 160);
   border-radius: 10px;
+  box-shadow: 2px 2px 5px rgb(99, 85, 121);
+  height: 200px;
+  margin: 10px;
+}
+
+.uma-info{
+  display: grid;
+  grid-template-rows: 20px 1fr 1fr 1fr;
+  align-items: center;
 }
 
 .uma-card-buttons{
   display: grid;
+  justify-items: center;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
 }
 
 .expand-button{
   background-color: rgb(215, 178, 226);
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
 }
 
 .delete-button{
-  background-color: red;
+  background-color: rgb(202, 35, 35);
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
 }
 
 button:hover{
   cursor: pointer;
+  opacity: .5;
 }

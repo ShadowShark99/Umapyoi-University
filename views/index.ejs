@@ -12,7 +12,7 @@
   <% if(locals.umamusume) { %>
     <% for(let i = 0; i < umamusume.length; i++) { %>
       <div class="uma-card">
-        <div> <%- include("./partials/uma", {uma: umamusume[i]}) %></div>
+        <div class="uma-info"> <%- include("./partials/uma", {uma: umamusume[i]}) %></div>
         <div class="uma-card-buttons">
         <form action="/expand" method="POST">
           <input type="hidden" name="umaInfo" value="<%= umamusume[i].uma_id %>"> 
