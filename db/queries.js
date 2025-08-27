@@ -18,6 +18,7 @@ async function getExistingTrainer(trainer){
   return rows;
 }
 
+
 module.exports={
   getAllUmas,
   enrollUma,

@@ -5,5 +5,6 @@ const indexRouter = Router();
 indexRouter.get("/", indexController.getHome);
 indexRouter.post("/expand", indexController.expand);
 indexRouter.post("/delete", indexController.delete);
+indexRouter.post("/searchByTrainer", indexController.searchByTrainer);
 
 module.exports = indexRouter;

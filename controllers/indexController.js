@@ -36,3 +36,10 @@ exports.delete = async (req, res) => {
   await db.deleteUma(trainer);
   res.redirect("/");
 }
+
+exports.searchByTrainer = async(req, res) => {
+  const {trainer} = req.body;
+  const allTrainerUmas = await db.getExistingTrainer(trainer);
+  await addUmaInfo(allTrainerUmas);
+  res.render("trainerSearch", {umamusume: allTrainerUmas});
+};
