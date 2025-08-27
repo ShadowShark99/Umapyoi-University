@@ -30,7 +30,12 @@ const makeDropDownInfo = async(ids) => {
 
 exports.umaPost = async (req,res) => {
   const {trainer, umaSelect} = req.body;
-  const newUma = {
+  const existingTrainer = await db.getExistingTrainer(trainer);
+
+  const newUma = existingTrainer ? {
+    trainer: existingTrainer[0].trainer,
+    uma_id: umaSelect,
+  } : {
     trainer,
     uma_id: umaSelect,
   };

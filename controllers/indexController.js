@@ -21,7 +21,6 @@ const addUmaInfo = async (umamusume) => {
 
 //gets called by view GET
 exports.expand = async (req, res) => {
-  console.log("expanding");
   const {umaInfo} = req.body;
   const uma = await umaAPI.fetchUma(umaInfo);
   const umaExpand = {name: uma.name_en, 

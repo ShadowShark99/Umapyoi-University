@@ -13,8 +13,14 @@ async function deleteUma(uma){
   await pool.query("DELETE FROM umamusume where trainer = $1", [uma]);
 }
 
+async function getExistingTrainer(trainer){
+  const {rows} = await pool.query("SELECT * FROM umamusume WHERE trainer ILIKE $1", [trainer]);
+  return rows;
+}
+
 module.exports={
   getAllUmas,
   enrollUma,
   deleteUma,
+  getExistingTrainer,
 };
