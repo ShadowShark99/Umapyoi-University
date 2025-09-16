@@ -18,10 +18,14 @@ async function getExistingTrainer(trainer){
   return rows;
 }
 
+async function trainUma(trainer, uma_id){
+  await pool.query("UPDATE umamusume SET uma_stats = uma_stats + 1 WHERE (trainer = $1) AND (uma_id = $2)", [trainer, uma_id]);
+}
 
 module.exports={
   getAllUmas,
   enrollUma,
   deleteUma,
   getExistingTrainer,
+  trainUma,
 };

@@ -53,8 +53,10 @@ exports.umaPost = async (req,res) => {
 
   if(existingTrainer.length > 0 && checkExistingUma(existingTrainer,umaSelect)){
     res.render("error");
+  }else {
+    await db.enrollUma(newUma);
+    res.redirect("/");
   }
 
-  await db.enrollUma(newUma);
-  res.redirect("/");
+  
 };

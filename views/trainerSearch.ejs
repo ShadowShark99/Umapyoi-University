@@ -1,3 +1,8 @@
+<% if(umamusume.length == 0) { %>
+  <h3>No Umas found for this trainer! </h3>
+  
+<% } %>
+
 <% for(let i = 0; i < umamusume.length; i++){ %>
   <div class="uma-card">
     <div class="uma-info"> <%- include("./partials/uma", {uma: umamusume[i]}) %></div>
@@ -13,3 +18,5 @@
     </div>
   </div>
 <% } %>
+
+<a href="/">Return to University Enterance</a>

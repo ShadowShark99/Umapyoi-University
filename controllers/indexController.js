@@ -21,20 +21,19 @@ const addUmaInfo = async (umamusume) => {
 
 //gets called by view GET
 exports.expand = async (req, res) => {
-  const {umaInfo} = req.body;
+  const {umaInfo, trainer} = req.body;
   const uma = await umaAPI.fetchUma(umaInfo);
   const umaExpand = {name: uma.name_en, 
                       src: uma.sns_icon, 
                       profile: uma.profile,
                       audio: uma.voice,
+                      id: umaInfo,
                     };
-  res.render("umaExpand", {uma: umaExpand});
+  res.render("umaExpand", {uma: umaExpand, trainer});
 };
 
 exports.delete = async (req, res) => {
   const {trainer, uma_id} = req.body;
-  console.log(trainer);
-  console.log(uma_id);
   await db.deleteUma(trainer, uma_id);
   res.redirect("/");
 }
@@ -44,4 +43,10 @@ exports.searchByTrainer = async(req, res) => {
   const allTrainerUmas = await db.getExistingTrainer(trainer);
   await addUmaInfo(allTrainerUmas);
   res.render("trainerSearch", {umamusume: allTrainerUmas});
+};
+
+exports.train = async(req, res) => {
+  const {trainer, uma_id} = req.body;
+  await db.trainUma(trainer, uma_id);
+  res.redirect("/");
 };
