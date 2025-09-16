@@ -1,7 +1,7 @@
 <h3> <%= uma.name %> </h3>
 <img src="<%= uma.src%>">
 <div><%= uma.profile %> </div>
-<form action="/train" method="POST">
+<form action="/expand/train" method="POST">
   <input type="hidden" name="trainer" value="<%= trainer %>">
   <input type="hidden" name="uma_id" value="<%= uma.id %>">
   <button type="submit">Train</button>

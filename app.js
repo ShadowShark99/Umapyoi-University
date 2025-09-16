@@ -3,6 +3,7 @@ const path = require("path");
 const app = express();
 const indexRouter = require("./routers/indexRouter");
 const enrollRouter = require("./routers/enrollRouter");
+const expandRouter = require("./routers/expandRouter");
 
 
 //css
@@ -17,6 +18,7 @@ app.set("view engine", "ejs");
 //routing
 app.use("/", indexRouter);
 app.use("/enroll", enrollRouter);
+app.use("/expand", expandRouter);
 
 const PORT = process.env.PORT || 3000;
 

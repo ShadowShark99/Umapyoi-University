@@ -10,7 +10,5 @@ exports.fetchUma = async (id) => {
     const get = `https://umapyoi.net/api/v1/character/${id}`;
     const response = await fetch(get);
     const result = await response.json();
-    // console.log("result recieved");
-    // console.log(result);
     return result;
 };
