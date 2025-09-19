@@ -1,3 +1,4 @@
 ## Umapyoi University    August 2025  
-Connect to PostgreSQL database to enroll umamusume  
-Engineer an express app to handle post and get requests
+Update, Select, Delete from Neon Database with PostgreSQL Pool and Client  
+Engineer an express app with MVC architecture to isolate DB and API calls.
+Fetch data from umapyoi.net with asynchronous calls to deliver up-to-date uma info  
