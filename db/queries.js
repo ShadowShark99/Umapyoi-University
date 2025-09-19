@@ -22,10 +22,21 @@ async function trainUma(trainer, uma_id){
   await pool.query("UPDATE umamusume SET uma_stats = uma_stats + 1 WHERE (trainer = $1) AND (uma_id = $2)", [trainer, uma_id]);
 }
 
+async function rivalTrainers(trainer){
+  const {rows} = await pool.query("SELECT * FROM umamusume WHERE NOT trainer ILIKE $1", [trainer]);
+  return rows;
+}
+
+async function win(trainer, uma_id){
+  await pool.query("UPDATE umamusume SET victories = victories + 1 WHERE (trainer = $1) AND (uma_id = $2)", [trainer, uma_id]);
+}
+
 module.exports={
   getAllUmas,
   enrollUma,
   deleteUma,
   getExistingTrainer,
   trainUma,
+  rivalTrainers,
+  win,
 };

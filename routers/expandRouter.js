@@ -4,5 +4,6 @@ const expandRouter = Router();
 
 expandRouter.post("/", expandController.expand);
 expandRouter.post("/train", expandController.train);
+expandRouter.post("/battle", expandController.battle);
 
 module.exports = expandRouter;

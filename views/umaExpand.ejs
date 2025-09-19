@@ -6,5 +6,13 @@
   <input type="hidden" name="uma_id" value="<%= uma.id %>">
   <button type="submit">Train</button>
 </form>
+
+<form action="/expand/battle" method="POST">
+  <input type="hidden" name="trainer" value="<%= trainer %>">
+  <input type="hidden" name="uma_id" value="<%= uma.id %>">
+  <input type="hidden" name="victories" value="<%= victories %>">
+  <input type="hidden" name="stats" value="<%= stats %>">
+  <button type="submit">Battle</button>
+</form>
 <audio src="<%= uma.audio %>" autoplay>
 

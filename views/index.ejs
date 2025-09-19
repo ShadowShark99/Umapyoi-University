@@ -17,6 +17,8 @@
         <form action="/expand" method="POST">
           <input type="hidden" name="umaInfo" value="<%= umamusume[i].uma_id %>">
           <input type="hidden" name="trainer" value ="<%= umamusume[i].trainer %>"> 
+          <input type="hidden" name="victories" value ="<%= umamusume[i].victories %>">
+          <input type="hidden" name="stats" value ="<%= umamusume[i].uma_stats %>">
           <button type="submit" class="expand-button">expand</button>
         </form>
         <form action="/delete" method="POST">
