@@ -4,7 +4,7 @@ const umaAPI = require("./umaAPI");
 exports.getHome = async (req, res) => {
   const rows = await db.getAllUmas();
   await addUmaInfo(rows);
-  console.log(rows);
+  //console.log(rows);
   res.render("index", {title: "Umapyoi University" ,umamusume: rows});
 }
 
