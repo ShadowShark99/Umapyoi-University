@@ -3,7 +3,7 @@ const nativeRust = require('../rust-tasks');
 //wrap in service 
 const computeDataAsync = async (id) =>{
   try{
-    const res = await nativeRust.umaFetch(id);
+    const res = await nativeRust.umaFetch(parseInt(id));
     console.log(res);
     return res;
   } catch(error){
