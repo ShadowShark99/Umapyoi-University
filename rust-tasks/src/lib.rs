@@ -21,14 +21,14 @@ pub struct UmaCharacter {
 
     pub date_gmt: String,
 
-    pub detail_img_pc: String,
-    pub detail_img_sp: String,
+    pub detail_img_pc: Option<String>,
+    pub detail_img_sp: Option<String>,
 
-    pub ears_fact: String,
-    pub family_fact: String,
+    pub ears_fact: Option<String>,
+    pub family_fact: Option<String>,
 
     pub game_id: u32,
-    pub grade: String,
+    pub grade: Option<String>,
     pub height: u32,
     pub id: u32,
 
@@ -40,29 +40,29 @@ pub struct UmaCharacter {
     pub name_jp: String,
     pub preferred_url: String,
 
-    pub profile: String,
-    pub residence: String,
+    pub profile: Option<String>,
+    pub residence: Option<String>,
 
     pub row_number: u32,
-    pub shoe_size: String,
+    pub shoe_size: Option<String>,
     pub site_idx: u32,
 
     pub size_b: u32,
     pub size_h: u32,
     pub size_w: u32,
 
-    pub slogan: String,
+    pub slogan: Option<String>,
 
-    pub sns_header: String,
-    pub sns_icon: String,
+    pub sns_header: Option<String>,
+    pub sns_icon: Option<String>,
 
-    pub strengths: String,
-    pub tail_fact: String,
+    pub strengths: Option<String>,
+    pub tail_fact: Option<String>,
 
-    pub thumb_img: String,
-    pub voice: String,
-    pub weaknesses: String,
-    pub weight: String,
+    pub thumb_img: Option<String>,
+    pub voice: Option<String>,
+    pub weaknesses: Option<String>,
+    pub weight: Option<String>,
 }
 
 //#[napi]
@@ -86,15 +86,20 @@ pub struct UmaCharacter {
 // }
 
 #[napi]
-pub async fn uma_fetch(id: u32) -> Result<String> {
+pub async fn uma_fetch(id: u32) -> Result<UmaCharacter> {
     let url = format!("https://umapyoi.net/api/v1/character/{id}");
 
     let response = reqwest::get(url)
         .await
         .map_err(|e| Error::from_reason(format!("Request failed: {e}")))?;
 
-    response
+    let text = response
         .text()
         .await
-        .map_err(|e| Error::from_reason(format!("Reading response failed: {e}")))
+        .map_err(|e| Error::from_reason(format!("Reading response failed: {e}")))?;
+
+    let uma: UmaCharacter = serde_json::from_str(&text)
+        .map_err(|e| Error::from_reason(format!("JSON decode failed: {e}")))?;
+
+    Ok(uma)
 }

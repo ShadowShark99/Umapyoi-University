@@ -18,12 +18,12 @@ export interface UmaCharacter {
   colorMain: string
   colorSub: string
   dateGmt: string
-  detailImgPc: string
-  detailImgSp: string
-  earsFact: string
-  familyFact: string
+  detailImgPc?: string
+  detailImgSp?: string
+  earsFact?: string
+  familyFact?: string
   gameId: number
-  grade: string
+  grade?: string
   height: number
   id: number
   link: string
@@ -32,23 +32,23 @@ export interface UmaCharacter {
   nameEnInternal: string
   nameJp: string
   preferredUrl: string
-  profile: string
-  residence: string
+  profile?: string
+  residence?: string
   rowNumber: number
-  shoeSize: string
+  shoeSize?: string
   siteIdx: number
   sizeB: number
   sizeH: number
   sizeW: number
-  slogan: string
-  snsHeader: string
-  snsIcon: string
-  strengths: string
-  tailFact: string
-  thumbImg: string
-  voice: string
-  weaknesses: string
-  weight: string
+  slogan?: string
+  snsHeader?: string
+  snsIcon?: string
+  strengths?: string
+  tailFact?: string
+  thumbImg?: string
+  voice?: string
+  weaknesses?: string
+  weight?: string
 }
 
-export declare function umaFetch(id: number): Promise<string>
+export declare function umaFetch(id: number): Promise<UmaCharacter>
